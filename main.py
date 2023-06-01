@@ -8,10 +8,13 @@ def startDowload():
     ytLink = link.get()
     ytObject = YouTube(ytLink)
     video = ytObject.streams.get_highest_resolution()
+    
+    title.configure(text=ytObject.title, text_color="white")
+    finishLabel.configure(text="")
     video.download()
+    finishLabel.configure(text="Downloaded!", text_color="white")
   except:
-    print("YouTube link is invalid")
-  finishLabel.configure(text="Downloaded!")
+    finishLabel.configure(text="YouTube link is invalid", text_color="red")
 
 
 # System Settings
